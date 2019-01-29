@@ -135,7 +135,7 @@ class App:
 
 		soup=BeautifulSoup(link,'html.parser')
 
-		path="\\instaPhotos\\"+self.target_profile
+		path="instaPhotos\\"+self.target_profile
 		if not os.path.exists(path):
 			os.mkdir(path)
 
