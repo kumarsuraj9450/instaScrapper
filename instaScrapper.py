@@ -19,7 +19,7 @@ class App:
 		self.error=False
 		self.link=set()
 		self.driver=webdriver.Chrome('C:\chromedriver_win32\chromedriver.exe')
-		self.main_url='https://www.instagram.com/'
+		self.main_url= 'https://www.instagram.com/accounts/login/'#'https://www.instagram.com/'
 		self.driver.get(self.main_url)
 		self.driver.maximize_window()
 		self.log_in()
@@ -37,17 +37,18 @@ class App:
 
 	def log_in(self,):
 	    try:
-	        login_button=self.driver.find_element_by_xpath('//p[@class="izU2O"]/a')
-	        login_button.click()
-	        sleep(3)
+	        #login_button=self.driver.find_element_by_xpath('//p[@class="izU2O"]/a')
+	        #login_button.click()
+	        #sleep(3)
 	        try:
 	            username=self.driver.find_element_by_xpath('//input[@name="username"]')
 	            username.send_keys(self.username)
 	            password = self.driver.find_element_by_xpath('//input[@name="password"]')
 	            password.send_keys(self.password)
-	            login=self.driver.find_element_by_xpath('//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[3]/button')
-	            login.click()
+	            #login=self.driver.find_element_by_xpath('//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[3]/button')
+	            #login.click()
 	            sleep(2)
+				password.submit()
 	        except Exception:
 	            print('Some error occurred while trying to find username and password ')
 	            self.error=True
@@ -73,7 +74,7 @@ class App:
 
 			sleep(3)
 
-			target_url=self.main_url+self.target_profile
+			target_url='https://www.instagram.com/'+self.target_profile #self.main_url
 			#opening target profile
 			self.driver.get(target_url)
 			sleep(2)
